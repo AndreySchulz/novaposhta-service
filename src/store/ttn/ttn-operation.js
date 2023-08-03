@@ -14,7 +14,7 @@ export const fetchInfo = createAsyncThunk(
       methodProperties: {
         Documents: [
           {
-            DocumentNumber: 20450746588823,
+            DocumentNumber: number,
           },
         ],
       },

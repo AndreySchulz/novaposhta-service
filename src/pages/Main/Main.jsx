@@ -1,6 +1,7 @@
-const Main =()=>{
+import SearchInput from "../../components/SearchInput/SearchInput";
 
-    return<h1>asdasd</h1>
-}
+const Main = () => {
+  return <SearchInput />;
+};
 
-export default Main
+export default Main;
