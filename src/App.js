@@ -1,16 +1,32 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchInfo } from "./store/ttn/ttn-operation";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Loader from "./components/Loader/Loader";
 
+
+const Main = lazy(() => import('./pages/Main/Main'));
+const Navigation = lazy(() => import('./components/Navigation/Navigation'));
+
+const MainLayout = () => {
+  return (
+    <>
+      <Suspense fallback={<Loader/>}>
+        <Navigation/>
+        <Outlet />
+      </Suspense>
+    </>
+  );
+};
 
 function App() {
-  const dispatch = useDispatch()
-  useEffect(()=>{
-
-dispatch(fetchInfo())
-
-  },[dispatch])
-  return <h1>start</h1>;
+  return(
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Main/>} />
+        <Route path="/departaments" element={null} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  )
 }
 
 export default App;
