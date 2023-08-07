@@ -4,8 +4,6 @@ export const selectError = state => state.info.infoError;
 
 export const selectNumbersList = state => state.info.ttnNumbersList;
 
-
-
 export const selectDepartmentsList = state => state.info.departmentsList;
 
 export const selectDepartmentsError = state => state.info.departmentsError;
