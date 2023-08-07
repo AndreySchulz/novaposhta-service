@@ -1,13 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { Header, NaigationLink } from './Navigation.styled';
 
 const Navigation =()=>{
 
     return(
-        <header>
-            <NavLink to="/">Відслідкувати Посилку</NavLink>
-            <NavLink to="/departaments">Знайти відділення</NavLink>
+        <Header>
+            <NaigationLink to="/">Відслідкувати Посилку</NaigationLink>
+            <NaigationLink to="/departaments">Знайти відділення</NaigationLink>
 
-        </header>
+        </Header>
 
     )
 }

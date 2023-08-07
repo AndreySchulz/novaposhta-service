@@ -1,6 +1,7 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
+import Container from "./components/Container/Container";
 
 
 const Main = lazy(() => import('./pages/Main/Main'));
@@ -8,12 +9,12 @@ const Navigation = lazy(() => import('./components/Navigation/Navigation'));
 
 const MainLayout = () => {
   return (
-    <>
+    <Container>
       <Suspense fallback={<Loader/>}>
         <Navigation/>
         <Outlet />
       </Suspense>
-    </>
+    </Container>
   );
 };
 

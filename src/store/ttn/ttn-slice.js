@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchDepartments, fetchInfo } from './ttn-operation';
 
-
 const initialState = {
   ttnInfo: {},
-  selectedNumber: '',
   ttnNumbersList: [],
   departmentsList: [],
   infoError: false,
@@ -22,9 +20,7 @@ const infoSlice = createSlice({
     updateError(state, action) {
       state.infoError = action.payload;
     },
-    updateSelectedNumber(state, action) {
-      state.selectedNumber = action.payload;
-    },
+
     clearRequestHistory(state, action) {
       state.ttnNumbersList = [];
     },
@@ -43,6 +39,7 @@ const infoSlice = createSlice({
     [fetchInfo.pending](state, action) {
       state.infoError = false;
       state.isLoading = true;
+      state.ttnInfo = {};
     },
     [fetchInfo.fulfilled](state, action) {
       state.ttnInfo = action.payload;
@@ -51,7 +48,6 @@ const infoSlice = createSlice({
       if (!state.ttnNumbersList.includes(currentTtnNumber)) {
         state.ttnNumbersList.push(currentTtnNumber);
       }
-      state.selectedNumber = currentTtnNumber;
     },
     [fetchInfo.rejected](state, action) {
       state.isLoading = false;
@@ -59,6 +55,7 @@ const infoSlice = createSlice({
     },
     [fetchDepartments.pending](state, action) {
       state.isLoading = true;
+      state.departmentsList = [];
     },
     [fetchDepartments.fulfilled](state, action) {
       if (state.page === 1) {
