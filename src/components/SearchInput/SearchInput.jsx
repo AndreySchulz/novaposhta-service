@@ -1,8 +1,9 @@
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { selectError } from '../../store/ttn/ttn-selectors';
 import { fetchInfo } from '../../store/ttn/ttn-operation';
+import { ErrorMsg, FieldForm, FormBox, FormBtn } from './SearchInput.styled';
 
 const schema = yup.object().shape({
   ttnNumber: yup
@@ -20,8 +21,8 @@ const SearchInput = () => {
   };
 
   const submitFetch = (values, { resetForm }) => {
-    resetForm();
     dispatch(fetchInfo(values.ttnNumber));
+    resetForm();
   };
 
   return (
@@ -30,22 +31,22 @@ const SearchInput = () => {
       validationSchema={schema}
       onSubmit={submitFetch}
     >
-      {({ resetForm, handleSubmit, handleChange, errors }) => {
+      {({ resetForm, handleSubmit, handleChange }) => {
         return (
-          <Form>
-            <Field
+          <FormBox>
+            <FieldForm
               type="text"
               name="ttnNumber"
               placeholder="Номер накладної"
               onChange={handleChange}
             />
-            <ErrorMessage name="ttnNumber" component="p" />
-            {error ? <p>Невірний номер ТТН</p> : null}
+            <ErrorMessage name="ttnNumber" component={ErrorMsg} />
+            {error ? <ErrorMsg>Невірний номер ТТН</ErrorMsg> : null}
 
-            <button type="submit" onSubmit={handleSubmit}>
+            <FormBtn type="submit" onSubmit={handleSubmit}>
               Отримати статус
-            </button>
-          </Form>
+            </FormBtn>
+          </FormBox>
         );
       }}
     </Formik>

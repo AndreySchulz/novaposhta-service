@@ -1,20 +1,22 @@
-import { CirclesWithBar } from "react-loader-spinner";
-
+import { Puff } from 'react-loader-spinner';
+import { ContainerLoaderBox, LoaderBox } from './Loader.styled';
 
 const Loader = () => {
   return (
-    <CirclesWithBar
-      height="100"
-      width="100"
-      color="#de0b0b"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-      outerCircleColor=""
-      innerCircleColor=""
-      barColor=""
-      ariaLabel="circles-with-bar-loading"
-    />
+   
+      <LoaderBox>
+        <Puff
+          height="80"
+          width="80"
+          radius={1}
+          color="#ff392e"
+          ariaLabel="puff-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </LoaderBox>
+    
   );
 };
 
