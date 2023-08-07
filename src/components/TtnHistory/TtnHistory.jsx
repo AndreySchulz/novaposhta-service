@@ -1,6 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNumbersList } from '../../store/ttn/ttn-selectors';
-import { ClearHistoryBtn, TtnHistoriList, TtnHistoryBox, TtnItem } from './TtnHistory.styled';
+import {
+  ClearHistoryBtn,
+  TtnHistoriList,
+  TtnHistoryBox,
+  TtnHistoryBoxHeader,
+  TtnItem,
+} from './TtnHistory.styled';
 import { clearRequestHistory } from '../../store/ttn/ttn-slice';
 import { fetchInfo } from '../../store/ttn/ttn-operation';
 
@@ -19,6 +25,7 @@ const TtnHistory = () => {
 
   return (
     <TtnHistoryBox>
+      <TtnHistoryBoxHeader>Історія</TtnHistoryBoxHeader>
       {ttnList.length >= 1 ? (
         <>
           <TtnHistoriList>

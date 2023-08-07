@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectInfo, selectIsLoading } from '../../store/ttn/ttn-selectors';
 import Loader from '../Loader/Loader';
-import { TableBox, TableTr } from './TtnTable.styled';
+import { TableBox, TableTdHeader, TableTr } from './TtnTable.styled';
 
 const TtnTable = () => {
   const { Status, StatusCode, WarehouseSender, WarehouseRecipient } =
@@ -16,17 +16,17 @@ const TtnTable = () => {
         <table>
           <tbody>
             <TableTr>
-              <td>Статус доставки:</td>
+              <TableTdHeader>Статус доставки:</TableTdHeader>
               <td>{Status}</td>
             </TableTr>
             {StatusCode !== '3' ? (
               <>
                 <TableTr>
-                  <td>Відправлено:</td>
+                  <TableTdHeader>Відправлено:</TableTdHeader>
                   <td>{WarehouseSender}</td>
                 </TableTr>
                 <TableTr>
-                  <td>Отримано:</td>
+                  <TableTdHeader>Отримано:</TableTdHeader>
                   <td>{WarehouseRecipient}</td>
                 </TableTr>
               </>
