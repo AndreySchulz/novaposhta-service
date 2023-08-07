@@ -35,8 +35,10 @@ export const fetchInfo = createAsyncThunk(
 
 export const fetchDepartments = createAsyncThunk(
   'department/fetchDepartment',
-
-  async ({ city, page }, thunkAPI) => {
+  
+  async ({city, page}, thunkAPI) => {
+   
+   
     const data = {
       apiKey: process.env.REACT_APP_API_KEY,
       modelName: 'Address',
@@ -44,7 +46,7 @@ export const fetchDepartments = createAsyncThunk(
       methodProperties: {
         CityName: city,
         Page: page,
-        Limit: '20',
+        Limit: '30',
         Language: 'UA',
       },
     };

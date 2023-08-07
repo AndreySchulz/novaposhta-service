@@ -6,6 +6,7 @@ import Container from "./components/Container/Container";
 
 const Main = lazy(() => import('./pages/Main/Main'));
 const Navigation = lazy(() => import('./components/Navigation/Navigation'));
+const Departament = lazy(() => import('./pages/Departament/Departament'));
 
 const MainLayout = () => {
   return (
@@ -23,7 +24,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Main/>} />
-        <Route path="/departaments" element={null} />
+        <Route path="/departaments" element={<Departament/>} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
