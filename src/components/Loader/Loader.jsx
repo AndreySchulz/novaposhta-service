@@ -1,5 +1,5 @@
 import { Puff } from 'react-loader-spinner';
-import { ContainerLoaderBox, LoaderBox } from './Loader.styled';
+import { LoaderBox } from './Loader.styled';
 
 const Loader = () => {
   return (
