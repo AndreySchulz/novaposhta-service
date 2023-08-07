@@ -52,6 +52,7 @@ const SearchInput = () => {
       <Form>
         <div>
           <TtnInput />
+          {error ?<p>Невірний номер ТТН</p> : null}
         </div>
         <button type="submit">Отримати статус</button>
       </Form>
