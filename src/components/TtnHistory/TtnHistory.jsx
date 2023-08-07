@@ -30,10 +30,10 @@ const TtnHistory = () => {
         <>
           <TtnHistoriList>
             {ttnList.map(ttn => (
-              <TtnItem onClick={() => SelectTtn(ttn)}>{ttn}</TtnItem>
+              <TtnItem key={ttn} onClick={() => SelectTtn(ttn)}>{ttn}</TtnItem>
             ))}
           </TtnHistoriList>
-          <ClearHistoryBtn type="button" on onClick={cliarHisoryTtn}>
+          <ClearHistoryBtn type="button" onClick={cliarHisoryTtn}>
             Очистити історію пошуку
           </ClearHistoryBtn>
         </>

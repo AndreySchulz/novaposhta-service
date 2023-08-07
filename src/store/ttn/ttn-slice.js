@@ -8,8 +8,6 @@ const initialState = {
   infoError: false,
   departmentsError: false,
   isLoading: false,
-  page: 1,
-  city: '',
   totalCount: 0,
 };
 
@@ -26,10 +24,6 @@ const infoSlice = createSlice({
     },
     updatePage(state, action) {
       state.page = action.payload;
-    },
-    updateCity(state, action) {
-      state.city = action.payload;
-      state.page = 1;
     },
     clearDepartmentsList(state, action) {
       state.departmentsList = [];
@@ -58,14 +52,8 @@ const infoSlice = createSlice({
       state.departmentsList = [];
     },
     [fetchDepartments.fulfilled](state, action) {
-      if (state.page === 1) {
-        state.departmentsList = action.payload.data;
-      } else {
-        state.departmentsList = [
-          ...state.departmentsList,
-          ...action.payload.data,
-        ];
-      }
+      state.departmentsList = action.payload.data;
+      
       state.totalCount = action.payload.totalCount;
       state.departmentsError = false;
       state.isLoading = false;
