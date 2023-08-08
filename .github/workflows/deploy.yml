@@ -1,24 +1,31 @@
-name: Build and deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Install, lint, build 🔧
-        run: |
-          npm install
-          
-          npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          branch: gh-pages
-          folder: build
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./build
+          cname: your-custom-domain.com # Если используете собственный домен, укажите его здесь
