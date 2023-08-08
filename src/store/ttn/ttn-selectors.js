@@ -8,8 +8,6 @@ export const selectDepartmentsList = state => state.info.departmentsList;
 
 export const selectDepartmentsError = state => state.info.departmentsError;
 
-export const selectPage = state => state.info.page;
-
 export const selectTotalCount = state => state.info.totalCount;
 
 export const selectIsLoading = state => state.info.isLoading;

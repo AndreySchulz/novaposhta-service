@@ -15,18 +15,8 @@ const infoSlice = createSlice({
   name: 'info',
   initialState: initialState,
   reducers: {
-    updateError(state, action) {
-      state.infoError = action.payload;
-    },
-
     clearRequestHistory(state, action) {
       state.ttnNumbersList = [];
-    },
-    updatePage(state, action) {
-      state.page = action.payload;
-    },
-    clearDepartmentsList(state, action) {
-      state.departmentsList = [];
     },
   },
   extraReducers: {
@@ -66,13 +56,7 @@ const infoSlice = createSlice({
 });
 
 export const {
-  updateError,
-  updateSelectedNumber,
-  deleteSelectedNumber,
   clearRequestHistory,
-  updatePage,
-  updateCity,
-  clearDepartmentsList,
 } = infoSlice.actions;
 
 export const infoReducer = infoSlice.reducer;
