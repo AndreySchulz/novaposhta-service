@@ -12,9 +12,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="novaposhta-service">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </PersistGate>
   </Provider>
 );
+// basename="novaposhta-service"
