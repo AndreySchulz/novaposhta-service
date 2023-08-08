@@ -1,7 +1,14 @@
 import { useSelector } from 'react-redux';
 import { selectDepartmentsList } from '../../store/ttn/ttn-selectors';
-import { DropDownBox } from './DepartamentsList.styled';
+import {
+  DepartamentBox,
+  DepartamentItem,
+  DropDownBox,
+} from './DepartamentsList.styled';
 import { useState } from 'react';
+
+import 'leaflet/dist/leaflet.css';
+import Map from '../Map/Map';
 
 const DepartamentsList = () => {
   const departaments = useSelector(selectDepartmentsList);
@@ -12,23 +19,24 @@ const DepartamentsList = () => {
   };
 
   return (
-    <ul>
-      {departaments?.map(dep => 
-        <li key={dep.SiteKey}>
+    <DepartamentBox>
+      {departaments?.map(dep => (
+        <DepartamentItem key={dep.SiteKey}>
           <h2
             onClick={() => {
               dropDownClick(dep.SiteKey);
             }}
           >
-            {dep.Description}
+            {dep.Description} ↓
           </h2>
-          <DropDownBox className={activeIndex === dep.SiteKey ? 'active' : null}>
-            <p>{dep.Latitude}</p>
-            <p>{dep.Longitude}</p>
+          <DropDownBox
+            className={activeIndex === dep.SiteKey ? 'active' : null}
+          >
+            <Map lat={dep.Latitude} long={dep.Longitude} name={dep.Description}/>
           </DropDownBox>
-        </li>
-      )}
-    </ul>
+        </DepartamentItem>
+      ))}
+    </DepartamentBox>
   );
 };
 
