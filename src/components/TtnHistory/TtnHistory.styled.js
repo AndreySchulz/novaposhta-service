@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../stylesheet/breakpoints';
 
 export const TtnHistoryBox = styled.div`
   position: relative;
@@ -6,7 +7,7 @@ export const TtnHistoryBox = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 300px;
+  
   min-height: 300px;
 
   padding: 20px;
@@ -14,6 +15,10 @@ export const TtnHistoryBox = styled.div`
   border-radius: 5px;
 
   background: #80808017;
+  
+  @media ${device.desktop} {
+    width: 300px;
+  }
 `;
 
 export const TtnHistoryBoxHeader = styled.h2`
